@@ -1,0 +1,2 @@
+-- Inserção de livros de tecnologia
+INSERT INTO tb_livros(titulo, descricao, edicao, isbn, dataPublicacao) VALUES ('Clean Code: A Handbook of Agile Software Craftsmanship', 'Livro de Tecnologia', '1ª', '9780132350884', DATE '2008-08-11');
