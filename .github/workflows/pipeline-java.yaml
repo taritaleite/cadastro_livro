@@ -51,6 +51,9 @@ jobs:
       - name: Verificar Repositório
         uses: actions/checkout@v2
 
+      - name: Construir com Maven
+        run: mvn -B package --file pom.xml
+
       - name: Construir imagem Docker
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/my-app:${{ github.sha }} .
 
