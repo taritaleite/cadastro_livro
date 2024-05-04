@@ -19,7 +19,7 @@ jobs:
           cache: 'maven'
 
       - name: Set JAVA_HOME
-        run: echo "JAVA_HOME=${{ steps.setup-java.outputs.path }}" >> $GITHUB_ENV
+        run: echo "JAVA_HOME=${{ steps.setup-java.outputs.java_home }}" >> $GITHUB_ENV
 
       - name: Construir com Maven
         run: mvn -B package --file pom.xml -DskipTests
