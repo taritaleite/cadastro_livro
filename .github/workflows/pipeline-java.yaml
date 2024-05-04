@@ -21,11 +21,6 @@ jobs:
       - name: Set JAVA_HOME
         run: echo "JAVA_HOME=${{ steps.setup-java.outputs.java_home }}" >> $GITHUB_ENV
 
-      - name: Print JAVA_HOME and Java version
-        run: |
-          echo "JAVA_HOME: $JAVA_HOME"
-          java -version
-
       - name: Construir com Maven
         run: mvn -B package --file pom.xml -DskipTests
 
@@ -43,6 +38,9 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
 
+      - name: Set JAVA_HOME
+        run: echo "JAVA_HOME=${{ steps.setup-java.outputs.java_home }}" >> $GITHUB_ENV
+
       - name: Executar testes
         run: mvn test
 
@@ -58,6 +56,16 @@ jobs:
     steps:
       - name: Verificar Repositório
         uses: actions/checkout@v2
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+          cache: 'maven'
+
+      - name: Set JAVA_HOME
+        run: echo "JAVA_HOME=${{ steps.setup-java.outputs.java_home }}" >> $GITHUB_ENV
 
       - name: Construir com Maven
         run: mvn -B package --file pom.xml
