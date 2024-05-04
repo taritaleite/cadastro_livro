@@ -39,7 +39,7 @@ jobs:
         run: mvn test
 
       - name: Executar análise de segurança estática
-        uses: ShiftLeftSecurity/scan-action@v1
+        uses: ShiftLeftSecurity/scan-action@master
         with:
           type: 'credscan,depscan,java'
           src: '.'
