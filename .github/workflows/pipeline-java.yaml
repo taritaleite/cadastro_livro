@@ -21,6 +21,11 @@ jobs:
       - name: Set JAVA_HOME
         run: echo "JAVA_HOME=${{ steps.setup-java.outputs.java_home }}" >> $GITHUB_ENV
 
+      - name: Print JAVA_HOME and Java version
+        run: |
+          echo "JAVA_HOME: $JAVA_HOME"
+          java -version
+
       - name: Construir com Maven
         run: mvn -B package --file pom.xml -DskipTests
 
